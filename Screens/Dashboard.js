@@ -43,7 +43,7 @@ const Dashboard = () => {
       <View style={styles.welcome}>
         <Text style={styles.header}>Hello, {context.name}</Text>
       </View>
-      <Button title="Logout" onPress={() => auth().signOut()}>
+      <Button title="Logout " onPress={() => auth().signOut()}>
         {' '}
       </Button>
     </View>
