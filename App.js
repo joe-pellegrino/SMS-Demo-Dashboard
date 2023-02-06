@@ -14,6 +14,8 @@ import Dashboard from './Screens/Dashboard';
 import firestore from '@react-native-firebase/firestore';
 import AppContext from './components/AppContext';
 import messaging from '@react-native-firebase/messaging';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faHome, faComments} from '@fortawesome/free-solid-svg-icons';
 
 const TeacherConversationStack = createNativeStackNavigator();
 const StudentConversationStack = createNativeStackNavigator();
@@ -176,6 +178,9 @@ export default function App() {
                 name="Dashboard"
                 component={DashboardScreen}
                 options={{
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon size={25} icon={faHome} color="black" />
+                  ),
                   headerRight: () => (
                     <Button
                       onPress={() => alert('This is a button!')}
@@ -187,7 +192,16 @@ export default function App() {
               />
               <Tab.Screen
                 name="Teacher"
-                options={{headerShown: false}}
+                options={{
+                  headerShown: false,
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon
+                      size={25}
+                      icon={faComments}
+                      color="#1E3050"
+                    />
+                  ),
+                }}
                 component={TeacherConversationStackScreen}
               />
             </Tab.Navigator>
@@ -213,6 +227,9 @@ export default function App() {
                 name="Dashboard"
                 component={DashboardScreen}
                 options={{
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon size={25} icon={faHome} color="#1E3050" />
+                  ),
                   headerRight: () => (
                     <Button
                       onPress={() => alert('This is a button!')}
@@ -223,8 +240,17 @@ export default function App() {
                 }}
               />
               <Tab.Screen
-                name="Student"
-                options={{headerShown: false}}
+                name="Conversations"
+                options={{
+                  headerShown: false,
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon
+                      size={25}
+                      icon={faComments}
+                      color="#1E3050"
+                    />
+                  ),
+                }}
                 component={StudentConversationStackScreen}
               />
             </Tab.Navigator>

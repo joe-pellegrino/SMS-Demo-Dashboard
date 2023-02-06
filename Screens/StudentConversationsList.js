@@ -26,7 +26,7 @@ const StudentConversationList = props => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    setCurrentUser(auth().currentUser);
+    setCurrentUser(context.user);
     if (currentUser) {
       getConversations();
     } else {
@@ -115,19 +115,23 @@ const StudentConversationList = props => {
       {/* <Text>{currentUser && currentUser.uid}</Text> */}
       {/* <Text>UID {JSON.stringify(context)}</Text> */}
 
-      <FlatList
-        // ref={ref => {
-        //   this.scrollView = ref;
-        // }}
-        // onContentSizeChange={() =>
-        //   this.scrollView.scrollToEnd({animated: true})
-        // }
-        maxToRenderPerBatch={999999}
-        // style={{backgroundColor: '#eeeeee', flex: 1}}
-        data={conversations}
-        renderItem={({item}) => <ItemRender item={item} />}
-        ItemSeparatorComponent={ItemDivider}
-      />
+      {user ? (
+        <FlatList
+          // ref={ref => {
+          //   this.scrollView = ref;
+          // }}
+          // onContentSizeChange={() =>
+          //   this.scrollView.scrollToEnd({animated: true})
+          // }
+          maxToRenderPerBatch={999999}
+          // style={{backgroundColor: '#eeeeee', flex: 1}}
+          data={conversations}
+          renderItem={({item}) => <ItemRender item={item} />}
+          ItemSeparatorComponent={ItemDivider}
+        />
+      ) : (
+        <></>
+      )}
     </View>
   );
 };

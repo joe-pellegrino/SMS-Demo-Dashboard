@@ -299,19 +299,23 @@ const TeacherConversationList = () => {
           Create New Broadcast
         </Text>
       </Pressable>
-      <FlatList
-        // ref={ref => {
-        //   this.scrollView = ref;
-        // }}
-        // onContentSizeChange={() =>
-        //   this.scrollView.scrollToEnd({animated: true})
-        // }
-        maxToRenderPerBatch={999999}
-        // style={{backgroundColor: '#eeeeee', flex: 1}}
-        data={conversations}
-        renderItem={({item}) => <ItemRender item={item} />}
-        ItemSeparatorComponent={ItemDivider}
-      />
+      {currentUser ? (
+        <FlatList
+          // ref={ref => {
+          //   this.scrollView = ref;
+          // }}
+          // onContentSizeChange={() =>
+          //   this.scrollView.scrollToEnd({animated: true})
+          // }
+          maxToRenderPerBatch={999999}
+          // style={{backgroundColor: '#eeeeee', flex: 1}}
+          data={conversations}
+          renderItem={({item}) => <ItemRender item={item} />}
+          ItemSeparatorComponent={ItemDivider}
+        />
+      ) : (
+        <></>
+      )}
       {/* <TouchableWithoutFeedback
         onPress={() => {
           console.log('pressed');
